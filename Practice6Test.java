@@ -27,8 +27,13 @@ public class Practice6Test {
 	 */
 	public boolean insertRemoveTest() {
 		heap.add(1);
-		if (heap.remove() == 1) {
-			return true;
+		try {
+			if (heap.remove() == 1) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -56,13 +61,24 @@ public class Practice6Test {
 		}
 		
 		// The first element out should be the minimum.
-		if (minimum != heap.remove()) {
-			correct = false;
+		try {
+			if (minimum != heap.remove()) {
+				correct = false;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		--entered;
 		
 		for (int i = 1; i < entered; i++) {
-			int n = heap.remove();
+			int n = -1;
+			try {
+				n = heap.remove();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (n > bound) {
 				correct = false;
 			}
@@ -86,11 +102,23 @@ public class Practice6Test {
 		}
 		
 		// The first element out should be the minimum.
-		int less = heap.remove();
+		int less = -1;
+		try {
+			less = heap.remove();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// Given the minimum, every other element should have a value larger than the previous
 		for (int i = 1; i < test3Size; i++) {
-			int current = heap.remove();
+			int current = -1;
+			try {
+				current = heap.remove();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (current < less) {
 				correct = false;
 			}
@@ -117,7 +145,12 @@ public class Practice6Test {
 		}
 		long end = System.currentTimeMillis();
 		for (int i = 0; i < test4Size; i++) {
-			heap.remove();
+			try {
+				heap.remove();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		// This should take ~10-15ms on a modern-ish computer. More means the implementation could be flawed.
 		if (end-start > 20)

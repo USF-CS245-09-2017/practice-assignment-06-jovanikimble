@@ -38,16 +38,11 @@ public class BinaryHeap {
 	 * Removes the highest priority item
 	 * 
 	 * @return the priority/data of item of highest priority
+	 * @throws Exception is the heap is empty.
 	 */
-	public int remove() {
+	public int remove() throws Exception {
 		if (empty()) {
-			System.out.println("Exception: Priority Queue is empty");
-			return -1;
-
-			/*
-			 * Not sure what to put here Exception wise. The test do not support
-			 * the throwing of exceptions for the remove method.
-			 */
+			throw new Exception("Nothing to remove, the heap is empty");
 		}
 
 		int priority = heap[0];
